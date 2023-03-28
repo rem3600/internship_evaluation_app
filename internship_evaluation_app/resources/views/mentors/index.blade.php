@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+           Mentors
         </h2>
     </x-slot>
 
@@ -11,8 +11,29 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                     <h2>Mentors</h2>
+
+                     @foreach ($mentors as $mentor)
+                        {{ $mentor->name }}
+                        {{ $mentor->email }}
+                        {{ $mentor->phone }}
+                        {{ $mentor->address }}
+                        {{ $mentor->city }}
+                        {{ $mentor->state }}
+                        {{ $mentor->zip }}
+                        {{ $mentor->country }}
+                        {{ $mentor->bio }}
+                        {{ $mentor->linkedin }}
+                        {{ $mentor->twitter }}
+                        {{ $mentor->github }}
+                        {{ $mentor->website }}
+                        {{ $mentor->created_at }}
+                        {{ $mentor->updated_at }}
+                @endforeach
                 </div>
             </div>
         </div>
     </div>
+
+
+
 </x-app-layout>
