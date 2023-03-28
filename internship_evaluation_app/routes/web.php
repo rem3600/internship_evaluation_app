@@ -37,13 +37,18 @@ Route::middleware('auth')->group(function () {
         return view('courses.index', compact('courses'));
     })->name('courses');
 
-
 // routes students
     Route::get('students', function () {
         $students = Student::all();
         return view('students.index', compact('students'));
     })->name('students');
 
+
+
+
+
+
+    
 
 // routes evaluations
     Route::get('evaluations', function () {
@@ -58,8 +63,6 @@ Route::middleware('auth')->group(function () {
     })->name('mentors');
 
 });
-
-
 
 
 require __DIR__.'/auth.php';
