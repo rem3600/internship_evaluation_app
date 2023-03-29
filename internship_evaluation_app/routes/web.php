@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Course;
 use App\Models\Student;
@@ -43,10 +44,17 @@ Route::middleware('auth')->group(function () {
         return view('students.index', compact('students'));
     })->name('students');
 
+    // Route::resource('students', StudentController::class)
+    //     ->only(['index', 'store'])
+    //     ->middleware(['auth', 'verified']);
 
+    // Route::resource('students', StudentController::class)
+    //     ->only(['index', 'store'])
+    //     ->middleware(['auth', 'verified']);
 
-
-
+    // Route::resource('students', StudentController::class)
+    //     ->only(['index', 'store', 'edit', 'update'])
+    //     ->middleware(['auth', 'verified']);
 
     
 
