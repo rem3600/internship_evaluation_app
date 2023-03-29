@@ -39,10 +39,7 @@ Route::middleware('auth')->group(function () {
     })->name('courses');
 
 // routes students
-    Route::get('students', function () {
-        $students = Student::all();
-        return view('students.index', compact('students'));
-    })->name('students');
+    Route::get('students', [StudentController::class, 'index'])->name('students');
 
     // Route::resource('students', StudentController::class)
     //     ->only(['index', 'store'])
