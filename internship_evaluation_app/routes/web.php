@@ -41,19 +41,8 @@ Route::middleware('auth')->group(function () {
 // routes students
     Route::get('students', [StudentController::class, 'index'])->name('students');
 
-    // Route::resource('students', StudentController::class)
-    //     ->only(['index', 'store'])
-    //     ->middleware(['auth', 'verified']);
-
-    // Route::resource('students', StudentController::class)
-    //     ->only(['index', 'store'])
-    //     ->middleware(['auth', 'verified']);
-
-    // Route::resource('students', StudentController::class)
-    //     ->only(['index', 'store', 'edit', 'update'])
-    //     ->middleware(['auth', 'verified']);
-
-    
+    Route::post('students', [StudentController::class, 'store'])->name('student');
+   
 
 // routes evaluations
     Route::get('evaluations', function () {
