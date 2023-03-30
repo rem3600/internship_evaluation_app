@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\controllers\UserTableController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Course;
 use App\Models\Student;
 use App\Models\Evaluation;
 use App\Models\Mentor;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,10 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('users', [UserTableController::class, 'index'])->name('users');
+
+Route::post('users', [UserTableController::class, 'store'])->name('users');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
