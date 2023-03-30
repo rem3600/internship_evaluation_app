@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-grey-100">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in,") }} {{ Auth::user()->name }}!
@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
+    <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8 bg-grey-100">
         <form method="POST" action="/students">
             @csrf 
             <input type="text" name="name" placeholder="{{ __('Naam student') }}" class="block w-full border-teal-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" autofocus>
@@ -29,7 +29,7 @@
             <x-primary-button class="mt-4 bg-teal-700">{{ __('Voeg toe') }}</x-primary-button>
         </form>
 
-        <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
+        <div class="mt-6 bg-grey-100 shadow-sm rounded-lg">
             @foreach ($students as $student)
                 <div class="p-6 flex space-x-2 border-teal-300 border-2 rounded-lg my-1">
                     <iframe src="{{ URL('images/user-graduate-svgrepo-com.svg') }}" class="h-6 w-6 text-gray-600 -scale-x-100"></iframe>
