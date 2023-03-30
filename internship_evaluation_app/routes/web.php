@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function () {
 // routes students
     Route::get('students', [StudentController::class, 'index'])->name('students');
 
-    Route::post('students', [StudentController::class, 'store'])->name('student');
+    Route::post('students', [StudentController::class, 'store'])->name('students');
    
 
 // routes evaluations

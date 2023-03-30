@@ -28,5 +28,24 @@
             <x-input-error :messages="$errors->get('phone')" class="mt-2" /> -->
             <x-primary-button class="mt-4 bg-teal-700">{{ __('Voeg toe') }}</x-primary-button>
         </form>
+
+        <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
+            @foreach ($students as $student)
+                <div class="p-6 flex space-x-2">
+                    <iframe src="{{ URL('images/user-graduate-svgrepo-com.svg') }}" class="h-6 w-6 text-gray-600 -scale-x-100"></iframe>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-800 text-xl">Docent: {{ Auth::user()->name }}</span>
+                                <small class="ml-2 text-sm text-gray-600">{{ $student->created_at->format('j M Y, g:i a') }}</small>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-lg text-gray-900">Naam student: {{ $student->first_name }} {{ $student->name }}</p>
+                        <p class="mt-4 text-lg text-gray-900">Email student: {{ $student->email }}</p>
+                        <p class="mt-4 text-lg text-gray-900">Telnummer student: {{ $student->phone }}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 </x-app-layout>
