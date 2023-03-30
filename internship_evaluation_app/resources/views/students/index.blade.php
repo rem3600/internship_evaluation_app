@@ -31,7 +31,7 @@
 
         <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
             @foreach ($students as $student)
-                <div class="p-6 flex space-x-2">
+                <div class="p-6 flex space-x-2 border-teal-300 border-2 rounded-lg my-1">
                     <iframe src="{{ URL('images/user-graduate-svgrepo-com.svg') }}" class="h-6 w-6 text-gray-600 -scale-x-100"></iframe>
                     <div class="flex-1">
                         <div class="flex justify-between items-center">
