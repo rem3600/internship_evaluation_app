@@ -62,13 +62,8 @@
                     <form method="POST" action="{{ route('students.destroy', $student) }}">
                         @csrf
                         @method('delete')
-                        <!-- <x-dropdown-link :href="route('students.destroy', $student)" onclick="event.preventDefault(); this.closest('form').submit();" class="p-0">
-                            {{ __('X') }}
-                            <i class="fa-regular fa-trash-can p-0"></i>
-                        </x-dropdown-link> -->
                         <div class=" hover:rotate-45">
                             <a href="{{ route('students.destroy', $student) }}" class="text-red-400 hover:text-red-600 px-4">
-                                <!-- {{ __('Edit') }} -->
                                 <i class="fa-regular fa-trash-can p-0"></i>
                             </a>
                         </div>
