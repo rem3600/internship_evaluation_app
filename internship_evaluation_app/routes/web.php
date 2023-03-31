@@ -42,6 +42,11 @@ Route::middleware('auth')->group(function () {
     Route::get('students', [StudentController::class, 'index'])->name('students');
 
     Route::post('students', [StudentController::class, 'store'])->name('students');
+
+    Route::get('/students/{student}/edit', [StudentController::class, 'edit'])->name('students.edit');
+    
+    Route::put('/students/{student}', [StudentController::class, 'update'])->name('students.update');
+
    
 
 // routes evaluations
