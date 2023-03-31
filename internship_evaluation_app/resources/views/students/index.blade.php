@@ -40,15 +40,14 @@
                         <div class="flex justify-between items-center">
                             <div>
                                 <span class="text-gray-800 text-xl">Docent: {{ Auth::user()->name }}</span>
-                                <small class="me-0 text-sm text-gray-600">{{ $student->created_at->format('j M Y, g:i a') }}</small>
-                                <div>
-                                    <a href="{{ route('students.edit', $student) }}" class="text-teal-600 hover:text-teal-900">{{ __('Edit') }}</a>
-                                </div>
-                            </div>
+                                <small class="me-0 text-sm text-gray-600">{{ $student->created_at->format('j M Y, g:i a') }}</small>                            </div>
                         </div>
                         <p class="mt-4 text-lg text-gray-900">Naam student: {{ $student->first_name }} {{ $student->name }}</p>
                         <p class="mt-4 text-lg text-gray-900">Email student: {{ $student->email }}</p>
                         <p class="mt-4 text-lg text-gray-900">Telnummer student: {{ $student->phone }}</p>
+                    </div>
+                    <div class="">
+                        <a href="{{ route('students.edit', $student) }}" class="text-teal-600 hover:text-red-600">{{ __('Edit') }}</a>
                     </div>
                 </div>
             @endforeach
