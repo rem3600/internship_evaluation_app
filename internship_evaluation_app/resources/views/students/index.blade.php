@@ -36,23 +36,43 @@
         <div class="mt-6 bg-grey-100 shadow-sm rounded-lg">
             @foreach ($students as $student)
                 <div class="p-6 flex space-x-2 border-teal-300 border-2 rounded-lg my-1">
-                    <iframe src="{{ URL('images/user-graduate-svgrepo-com.svg') }}" class="h-6 w-6 text-gray-600 -scale-x-100"></iframe>
-                    <!-- <iframe src="{{ URL('images/user-svgrepo-com.svg') }}" class="h-6 w-6 text-gray-600 -scale-x-100"></iframe>
-                    <iframe src="{{ URL('images/email-9-svgrepo-com.svg') }}" class="h-6 w-6 text-gray-600 -scale-x-100"></iframe>
-                    <iframe src="{{ URL('images/smartphone-mobile-phone-svgrepo-com.svg') }}" class="h-6 w-6 text-gray-600 -scale-x-100"></iframe> -->
                     <div class="flex-1">
                         <div class="flex justify-between items-center">
                             <div>
+                                <i class="fa-solid fa-person-chalkboard text-lg pr-1"></i>
                                 <span class="text-gray-800 text-xl">Docent: {{ Auth::user()->name }}</span>
                                 <small class="me-0 text-sm text-gray-600">{{ $student->created_at->format('j M Y, g:i a') }}</small>                            </div>
-                        </div>
-                        <p class="mt-4 text-lg text-gray-900">Naam student: {{ $student->first_name }} {{ $student->name }}</p>
-                        <p class="mt-4 text-lg text-gray-900">Email student: {{ $student->email }}</p>
-                        <p class="mt-4 text-lg text-gray-900">Telnummer student: {{ $student->phone }}</p>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-graduation-cap text-lg pr-1"></i>
+                                <p class="mt-4 text-lg text-gray-900 inline-block">Naam student: {{ $student->first_name }} {{ $student->name }}</p>
+                            </div>
+                            <div>
+                                <i class="fa-regular fa-envelope text-lg pr-2"></i>
+                                <p class="mt-4 text-lg text-gray-900 inline-block">Email student: {{ $student->email }}</p>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-mobile-screen-button text-lg pr-2"></i>
+                                <p class="mt-4 text-lg text-gray-900 inline-block">Telnummer student: {{ $student->phone }}</p>
+                            </div>
                     </div>
                     <div class="">
                         <a href="{{ route('students.edit', $student) }}" class="text-teal-600 hover:text-red-600">{{ __('Edit') }}</a>
                     </div>
+                    <form method="POST" action="{{ route('students.destroy', $student) }}">
+                        @csrf
+                        @method('delete')
+                        <!-- <x-dropdown-link :href="route('students.destroy', $student)" onclick="event.preventDefault(); this.closest('form').submit();" class="p-0">
+                            {{ __('X') }}
+                            <i class="fa-regular fa-trash-can p-0"></i>
+                        </x-dropdown-link> -->
+                        <div class="">
+                            <a href="{{ route('students.destroy', $student) }}" class="text-red-400 hover:text-red-600 px-4">
+                                <!-- {{ __('Edit') }} -->
+                                <i class="fa-regular fa-trash-can p-0"></i>
+                            </a>
+                        </div>
+                    </form>
                 </div>
             @endforeach
         </div>

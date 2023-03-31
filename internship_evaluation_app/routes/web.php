@@ -47,6 +47,8 @@ Route::middleware('auth')->group(function () {
     
     Route::put('/students/{student}', [StudentController::class, 'update'])->name('students.update');
 
+    Route::delete('/students/{student}', [StudentController::class, 'destroy'])->name('students.destroy');
+
    
 
 // routes evaluations
