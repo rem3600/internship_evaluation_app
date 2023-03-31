@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-grey-100">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border-teal-300 border-2">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in,") }} {{ Auth::user()->name }}!
                     <h2 class="text-xl pt-6">Students</h2>
