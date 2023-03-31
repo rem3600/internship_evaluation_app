@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
+        'auth'
     ];
 
     /**
@@ -43,9 +45,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function users(): HasMany {
-        return $this->hasMany(User::class);
-    }
+    
 
 
 

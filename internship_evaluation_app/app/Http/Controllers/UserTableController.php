@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserTableController extends Controller
 {
@@ -13,7 +16,13 @@ class UserTableController extends Controller
      */
     public function index(): View
     {
-        return view('dashboard');
+        // $role_id = Auth::role_id();
+        // $users = User::where('role', $role_id)
+        //                     ->latest()
+        //                     ->get();
+        
+        
+        // return view('dashboard', ['users' => $users]);
     }
 
     /**
@@ -47,9 +56,20 @@ class UserTableController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(UserTable $userTable)
+    public function show(User $users)
     {
-        //
+        // $users = User::whereHas('role_id', '0')->get();
+                                
+        // return view('dashboard', ['user' => $user]);
+
+        // $role_id = Auth::role_id();
+        $users = User::All();
+                    // where('role_id', $role_id)
+                    //         ->latest()
+                    //         ->get();
+        
+        
+        return view('dashboard', ['users' => $users]);
     }
 
     /**

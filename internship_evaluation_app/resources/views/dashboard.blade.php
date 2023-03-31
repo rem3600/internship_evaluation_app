@@ -9,11 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    @php
-                        $user = auth()->user();
-                    @endphp
+                    
                     {{ __("You're logged in!") }}<br>
-                    {{ __("Welcome, ".$user->name)}}
+                    {{ __("Welcome, ".Auth::user()->name)}}
                 </div>
             </div>
         </div>
@@ -53,15 +51,7 @@
                             <x-input-error :messages="$errors->get('message')" class="mt-2" />
                             <x-primary-button class="mt-4">{{ __('Add') }}</x-primary-button>
 
-                            @php
-
-                            $users = UserTableController::with('Role_id')
-                                ->whereHas('user', function ($query) {
-                                    $query->where('Role_id', Auth::id());
-                                })
-                                ->get();
-
-                            @endphp
+                            
 
                             
 
@@ -71,6 +61,33 @@
                         </form>
                     </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+
+                <div class="mt-6 bg-grey-100 shadow-sm rounded-lg">
+                    @foreach ($users as $user)
+                        <div class="p-6 flex space-x-2 border-teal-300 border-2 rounded-lg my-1">
+                            <div class="flex-1">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div>
+                                            <a href="{{ route('dashboard', $user) }}" class="text-teal-600 hover:text-teal-900">{{ __('') }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-lg text-gray-900">Naam: {{ $user->name }}</p>
+                                <p class="mt-4 text-lg text-gray-900">Email: {{ $user->email }}</p>
+                                <p class="mt-4 text-lg text-gray-900">Role: {{ $user->role_id }}</p>
+                                <hr>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
