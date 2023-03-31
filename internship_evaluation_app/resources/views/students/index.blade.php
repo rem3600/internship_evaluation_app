@@ -28,7 +28,11 @@
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
             <x-primary-button class="mt-4 bg-teal-700">{{ __('Voeg toe') }}</x-primary-button>
         </form>
-
+        @if (session('success'))
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                <strong class="font-bold">{{ session('success') }}</strong>
+            </div>
+        @endif
         <div class="mt-6 bg-grey-100 shadow-sm rounded-lg">
             @foreach ($students as $student)
                 <div class="p-6 flex space-x-2 border-teal-300 border-2 rounded-lg my-1">
