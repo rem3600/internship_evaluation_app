@@ -18,10 +18,10 @@
     <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8 bg-grey-100">
         <form method="POST" action="/students">
             @csrf 
-            <input type="text" name="name" placeholder="{{ __('Naam student') }}" class="block w-full border-teal-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" autofocus>
-            <input type="text" name="first_name" placeholder="{{ __('Voornaam student') }}" class="block w-full border-teal-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm my-1">
-            <input type="text" name="email" placeholder="{{ __('Email student') }}" class="block w-full border-teal-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm my-1">
-            <input type="text" name="phone" placeholder="{{ __('Telefoonnummer student') }}" class="block w-full border-teal-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm my-1">
+            <input type="text" name="name" placeholder="{{ __('Naam student') }}" class="block w-full border-teal-300 focus:border-sky-300 focus:ring focus:ring-sky-200 focus:ring-opacity-50 rounded-md shadow-sm" autofocus>
+            <input type="text" name="first_name" placeholder="{{ __('Voornaam student') }}" class="block w-full border-teal-300 focus:border-sky-300 focus:ring focus:ring-sky-200 focus:ring-opacity-50 rounded-md shadow-sm my-1">
+            <input type="text" name="email" placeholder="{{ __('Email student') }}" class="block w-full border-teal-300 focus:border-sky-300 focus:ring focus:ring-sky-200 focus:ring-opacity-50 rounded-md shadow-sm my-1">
+            <input type="text" name="phone" placeholder="{{ __('Telefoonnummer student') }}" class="block w-full border-teal-300 focus:border-sky-300 focus:ring focus:ring-sky-200 focus:ring-opacity-50 rounded-md shadow-sm my-1">
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
             <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />

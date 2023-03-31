@@ -7,18 +7,23 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index(): View
-    {
-        return view('students.index', [
-            'students' => Student::with('user')->latest()->get(),
-        ]);
-    }
+{
+    $userId = Auth::id(); // get the current user's ID
+    $students = Student::where('user_id', $userId)
+                ->with('user')
+                ->latest()
+                ->get();
+
+    return view('students.index', [
+        'students' => $students,
+    ]);
+}
 
     /**
      * Show the form for creating a new resource.
@@ -45,6 +50,7 @@ class StudentController extends Controller
         $student->first_name = $data['first_name'];
         $student->email = $data['email'];
         $student->phone = $data['phone'];
+        $student->user_id = Auth::id();
         $student->save();
     
         // $request->user()->students()->create($data);
