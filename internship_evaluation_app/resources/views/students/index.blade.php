@@ -66,7 +66,7 @@
                             {{ __('X') }}
                             <i class="fa-regular fa-trash-can p-0"></i>
                         </x-dropdown-link> -->
-                        <div class="">
+                        <div class=" hover:rotate-45">
                             <a href="{{ route('students.destroy', $student) }}" class="text-red-400 hover:text-red-600 px-4">
                                 <!-- {{ __('Edit') }} -->
                                 <i class="fa-regular fa-trash-can p-0"></i>
