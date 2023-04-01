@@ -29,7 +29,7 @@
             <x-primary-button class="mt-4 bg-teal-700">{{ __('Voeg toe') }}</x-primary-button>
         </form>
         @if (session('success'))
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative my-6" role="alert">
                 <strong class="font-bold">{{ session('success') }}</strong>
             </div>
         @endif
@@ -57,15 +57,13 @@
                             </div>
                     </div>
                     <div class="">
-                        <a href="{{ route('students.edit', $student) }}" class="text-teal-600 hover:text-red-600">{{ __('Edit') }}</a>
+                        <a href="{{ route('students.edit', $student) }}" class="text-black-600 hover:text-teal-600">{{ __('Edit') }}</a>
                     </div>
                     <form method="POST" action="{{ route('students.destroy', $student) }}">
                         @csrf
                         @method('delete')
-                        <div class=" hover:rotate-45">
-                            <a href="{{ route('students.destroy', $student) }}" class="text-red-400 hover:text-red-600 px-4">
-                                <i class="fa-regular fa-trash-can p-0"></i>
-                            </a>
+                        <div class=" hover:rotate-45 text-red-400 hover:text-red-600 px-4">
+                            <button><i class="fa-regular fa-trash-can p-0"></i></button>
                         </div>
                     </form>
                 </div>
