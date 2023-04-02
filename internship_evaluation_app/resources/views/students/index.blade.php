@@ -26,10 +26,10 @@
             <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
-            <x-primary-button class="mt-4 bg-teal-700">{{ __('Voeg toe') }}</x-primary-button>
+            <x-primary-button class="mt-4 bg-teal-700 focus:border-sky-300 hover:ring hover:ring-sky-200 rounded-md shadow-xxl hover:text-sky-300">{{ __('Voeg toe') }}</x-primary-button>
         </form>
         @if (session('success'))
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative my-6" role="alert">
+            <div class="bg-green-100 border border-teal-300 text-green-700 px-4 py-3 rounded-lg relative my-6" role="alert">
                 <strong class="font-bold">{{ session('success') }}</strong>
             </div>
         @endif
