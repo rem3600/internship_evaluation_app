@@ -73,6 +73,8 @@ class UserTableController extends Controller
          if ($id == 3) {
             $users = User::All()->where('role_id', NULL);
             return view('dashboard', ['users' => $users]); 
+         } else {
+            return view('dashboard');
          }
 
          

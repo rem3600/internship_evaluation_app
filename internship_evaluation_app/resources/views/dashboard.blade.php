@@ -71,23 +71,25 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
                 <div class="mt-6 bg-grey-100 shadow-sm rounded-lg">
-                    @foreach ($users as $user)
-                        <div class="p-6 flex space-x-2 border-teal-300 border-2 rounded-lg my-1">
-                            <div class="flex-1">
-                                <div class="flex justify-between items-center">
-                                    <div>
+                    @if(isset($user))
+                        @foreach ($users as $user)
+                            <div class="p-6 flex space-x-2 border-teal-300 border-2 rounded-lg my-1">
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-center">
                                         <div>
-                                            <a href="{{ route('dashboard', $user) }}" class="text-teal-600 hover:text-teal-900">{{ __('') }}</a>
+                                            <div>
+                                                <a href="{{ route('dashboard', $user) }}" class="text-teal-600 hover:text-teal-900">{{ __('') }}</a>
+                                            </div>
                                         </div>
                                     </div>
+                                    <p class="mt-4 text-lg text-gray-900">Naam: {{ $user->name }}</p>
+                                    <p class="mt-4 text-lg text-gray-900">Email: {{ $user->email }}</p>
+                                    <p class="mt-4 text-lg text-gray-900">Role: {{ $user->role_id }}</p>
+                                    <hr>
                                 </div>
-                                <p class="mt-4 text-lg text-gray-900">Naam: {{ $user->name }}</p>
-                                <p class="mt-4 text-lg text-gray-900">Email: {{ $user->email }}</p>
-                                <p class="mt-4 text-lg text-gray-900">Role: {{ $user->role_id }}</p>
-                                <hr>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
