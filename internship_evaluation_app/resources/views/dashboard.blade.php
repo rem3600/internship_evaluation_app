@@ -71,7 +71,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
                 <div class="mt-6 bg-grey-100 shadow-sm rounded-lg">
-                    @if(isset($user))
+                  
+                    @isset($users)
+                        
                         @foreach ($users as $user)
                             <div class="p-6 flex space-x-2 border-teal-300 border-2 rounded-lg my-1">
                                 <div class="flex-1">
@@ -89,7 +91,7 @@
                                 </div>
                             </div>
                         @endforeach
-                    @endif
+                   @endisset
                 </div>
             </div>
         </div>
