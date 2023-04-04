@@ -95,14 +95,16 @@ class UserTableController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
         $data = $request->validate([
+            'id' => 'required',
             'name' => 'required|string|max:100',
             'email' => 'required|string|max:100',
             'password' => ['required', Rules\Password::defaults()],
         ]);
-
+        $user = App\Models\User::where('id', $data->id);
+        // pass on id as <input type="hidden"> in form
 
         $user->password = Hash::make($data['password']);
         $user->update($data);
