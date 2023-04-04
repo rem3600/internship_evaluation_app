@@ -33,7 +33,7 @@
                 <strong class="font-bold">{{ session('success') }}</strong>
             </div>
         @endif
-        <div class="mt-6 bg-grey-100 shadow-sm rounded-lg">
+        <div class="mt-6 bg-white shadow-sm rounded-lg">
             @foreach ($students as $student)
                 <div class="p-6 flex space-x-2 border-teal-300 border-2 rounded-lg my-1">
                     <div class="flex-1">
