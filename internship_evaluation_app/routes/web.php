@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Student;
 use App\Models\Evaluation;
 use App\Models\Mentor;
+use App\Http\Controllers\EvaluationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,10 +53,26 @@ Route::middleware('auth')->group(function () {
    
 
 // routes evaluations
-    Route::get('evaluations', function () {
-        $evaluations = Evaluation::all();
-        return view('evaluations.index', compact('evaluations'));
-    })->name('evaluations');
+// Route for displaying all evaluations
+Route::get('/evaluations', [EvaluationController::class, 'index'])->name('evaluations.index');
+
+// Route for displaying the form for creating a new evaluation
+Route::get('/evaluations/create', [EvaluationController::class, 'create'])->name('evaluations.create');
+
+// Route for storing the newly created evaluation
+Route::post('/evaluations', [EvaluationController::class, 'store'])->name('evaluations.store');
+
+// Route for displaying a single evaluation
+Route::get('/evaluations/{evaluation}', [EvaluationController::class, 'show'])->name('evaluations.show');
+
+// Route for displaying the form for editing an evaluation
+Route::get('/evaluations/{evaluation}/edit', [EvaluationController::class, 'edit'])->name('evaluations.edit');
+
+// Route for updating an existing evaluation
+Route::put('/evaluations/{evaluation}', [EvaluationController::class, 'update'])->name('evaluations.update');
+
+// Route for deleting an existing evaluation
+Route::delete('/evaluations/{evaluation}', [EvaluationController::class, 'destroy'])->name('evaluations.destroy');
 
 // routes mentors
     Route::get('mentors', function () {
