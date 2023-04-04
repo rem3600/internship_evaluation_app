@@ -66,6 +66,7 @@ class UserTableController extends Controller
 
         // get all teachers (role_id = NULL) when an admin logs in
 
+
         $id = Auth::User()->role_id;
 
         
@@ -97,13 +98,14 @@ class UserTableController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:100',
             'email' => 'required|string|max:100',
-            'password' => 'required|string|max:100',
-            'password' => Hash::make($request->password),
+            'password' => ['required', Rules\Password::defaults()],
         ]);
 
+
+        $user->password = Hash::make($data['password']);
         $user->update($data);
 
-        return redirect('dashboard');
+        return redirect('update');
     }
 
     /**
