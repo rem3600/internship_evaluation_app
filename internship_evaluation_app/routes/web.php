@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Course;
 use App\Models\Student;
@@ -38,17 +39,17 @@ Route::middleware('auth')->group(function () {
     })->name('courses');
 
 // routes students
-    Route::get('students', function () {
-        $students = Student::all();
-        return view('students.index', compact('students'));
-    })->name('students');
+    Route::get('students', [StudentController::class, 'index'])->name('students');
 
+    Route::post('students', [StudentController::class, 'store'])->name('students');
 
-
-
-
-
+    Route::get('/students/{student}/edit', [StudentController::class, 'edit'])->name('students.edit');
     
+    Route::put('/students/{student}', [StudentController::class, 'update'])->name('students.update');
+
+    Route::delete('/students/{student}', [StudentController::class, 'destroy'])->name('students.destroy');
+
+   
 
 // routes evaluations
     Route::get('evaluations', function () {
