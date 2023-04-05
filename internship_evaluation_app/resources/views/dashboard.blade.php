@@ -17,33 +17,46 @@
         </div>
     </div>
 
+    @if (session('success'))
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" role="alert">
+                        <strong class="font-bold">{{ session('success') }}</strong>
+                    </div>
+                </div>
+            </div>
+    @endif
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
-                        <form method="POST" action="">
+                        <form method="POST" action="dashboard">
                             @csrf
-                                <textarea
-                                    name="Username"
+                                <input
+                                    type="text"
+                                    name="name"
                                     placeholder="{{ __('Username') }}"
                                     class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                                ></textarea>
+                                ></input>
                                 <br>
 
-                                <textarea
+                                <input
+                                    type="text"
                                     name="email"
                                     placeholder="{{ __('E-mail') }}"
                                     class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                                ></textarea>
+                                ></input>
                                 <br>
 
-                                <textarea
+                                <input
+                                    type="text"
                                     name="password"
                                     placeholder="{{ __('Password') }}"
                                     class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                                ></textarea>
+                                ></input>
                                 <br>
                                 
 
@@ -51,13 +64,6 @@
                             <x-input-error :messages="$errors->get('message')" class="mt-2" />
                             <x-primary-button class="mt-4">{{ __('Add') }}</x-primary-button>
 
-                            
-
-                            
-
-
-
-                            
                         </form>
                     </div>
 
@@ -69,6 +75,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+
+                
 
                 <div class="mt-6 bg-grey-100 shadow-sm rounded-lg">
                   
@@ -89,6 +97,21 @@
                                     <p class="mt-4 text-lg text-gray-900">Role: {{ $user->role_id }}</p>
                                     <hr>
                                 </div>
+
+                                <div class="">
+                                    <a href="{{ route('userUpdate.edit', $user) }}" class="text-black-600 hover:text-teal-600">{{ __('Edit') }}</a>
+                                </div>
+
+                                <div>   
+                                <form method="POST" action="{{ route('dashboard.destroy', $user->id) }}">
+                                    @csrf
+                                    @method('delete')
+                                    <div class=" hover:rotate-45 text-red-400 hover:text-red-600 px-4">
+                                        <button type="submit">Delete</button>
+                                    </div>
+                                </form>
+                                </div>
+
                             </div>
                         @endforeach
                    @endisset

@@ -32,6 +32,11 @@ Route::get('dashboard', [UserTableController::class, 'show'])->name('dashboard')
 
 Route::post('dashboard', [UserTableController::class, 'store'])->name('dashboard');
 
+Route::get('/userUpdate/{user}', [UserTableController::class, 'edit'])->name('userUpdate.edit');
+Route::put('/userUpdate/{user}', [UserTableController::class, 'update'])->name('userUpdate.update');
+Route::delete('dashboard/{user}', [UserTableController::class, 'destroy'])->name('dashboard.destroy');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

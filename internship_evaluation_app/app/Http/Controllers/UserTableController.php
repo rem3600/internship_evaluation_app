@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
@@ -54,7 +56,7 @@ class UserTableController extends Controller
         $user->password = Hash::make($data['password']);
         $user->save();
 
-        return redirect('dashboard')->with('success', 'user added successfully');
+        return redirect('dashboard');
     }
 
     /**
@@ -89,36 +91,40 @@ class UserTableController extends Controller
      */
     public function edit(User $user)
     {
-        
+        return view('userUpdate', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, User $user)
     {
         $data = $request->validate([
-            'id' => 'required',
+            // 'id' => 'required',
             'name' => 'required|string|max:100',
-            'email' => 'required|string|max:100',
+            'email' => 'required|string|max:100|unique:users,email',
             'password' => ['required', Rules\Password::defaults()],
         ]);
-        $user = App\Models\User::where('id', $data->id);
+        // $user = App\Models\User::where('id', $data['id'])->first();
         // pass on id as <input type="hidden"> in form
 
-        $user->password = Hash::make($data['password']);
+        if(isset($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        } else {
+            unset($data['password']);
+        }
         $user->update($data);
 
-        return redirect('update');
+        return redirect('dashboard')->with('success', 'user successfully updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(Request $request, User $user)
     {
-        $user->delete();
+        $user->findOrFail($user->id)->delete();
 
-        return redirect('dashboard');
+        return redirect('dashboard')->with('success', 'user succesfully deleted');
     }
 }
