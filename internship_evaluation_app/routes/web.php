@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Course;
 use App\Models\Student;
@@ -22,6 +23,8 @@ use App\Models\Mentor;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/', [MailController::class, 'sendMail']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
