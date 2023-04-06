@@ -10,7 +10,7 @@ class MailController extends Controller
 {
     public function sendMail() {
 
-        $name = 'Recipient';
+        $name = 'Jari Boeckstaens';
         Mail::to('fake@mail.com')->send(new SendEvaluation($name));
 
         return view('welcome');
